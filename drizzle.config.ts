@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["winnie-maingi_*"],
+  tablesFilter: ["estateplanner_*"],
 } satisfies Config;

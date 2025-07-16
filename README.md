@@ -4,8 +4,8 @@ An app that allows a financial & insurance coach to create and track users joini
 
 ## TODO
 
-- [ ] Make it deploy
-- [ ] Configure Ci/CD
+- [x] Make it deploy
+- [x] Configure Ci/CD
 - [ ] Scaffold basic UI with mock data
 - [ ] Add supabase DB & connect to db
 - [ ] Design DB schema

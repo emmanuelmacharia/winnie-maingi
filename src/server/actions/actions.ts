@@ -60,7 +60,7 @@ export const createGuestFeedback = async (feedback: {
     return {
       message: "Failed to submit feedback. Please try again later.",
       data: error instanceof Error ? error.message : "Unknown error",
-      success: "false",
+      success: false,
     };
   }
 };

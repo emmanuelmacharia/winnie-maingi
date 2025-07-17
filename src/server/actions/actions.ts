@@ -40,14 +40,9 @@ export const createGuestFeedback = async (feedback: {
     };
   }
 
-  if (
-    feedback.followUp &&
-    feedback.followUp.toLowerCase() !== "yes" &&
-    feedback.followUp?.toLowerCase() !== "no"
-  ) {
-    feedback.followUp = "no"; // Default to "No" if not provided or invalid
-  }
-  feedback.followUp = feedback.followUp?.trim() ?? "no";
+  const normalizedFollowUp = feedback.followUp?.trim().toLowerCase();
+  const followUp = normalizedFollowUp === "yes" ? "yes" : "no";
+  feedback.followUp = followUp;
 
   // message max length validation
   if (feedback.message.length > 1000) {

@@ -18,7 +18,7 @@ export default function HomePage() {
         <div className="absolute inset-0 -z-10 bg-black/40" />
         {/* Hero Content */}
         <div className="relative z-10 flex w-full flex-col justify-end px-12 pb-16 lg:px-24">
-          <h1 className="mb-6 max-w-7xl font-sans text-[3vw] leading-none text-white md:text-6xl">
+          <h1 className="mb-6 max-w-7xl font-sans text-[5vw] leading-none text-white md:text-6xl">
             Winnie Maingi
           </h1>
           <p className="max-w-4xl font-sans text-xl text-white md:text-3xl">

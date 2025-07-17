@@ -97,7 +97,7 @@ const FeedbackForm = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Are you interested in a 1 on 1 session?</SelectLabel>
+              {/* <SelectLabel>Are you interested in a 1 on 1 session?</SelectLabel> */}
               <SelectItem value="yes">Yes</SelectItem>
               <SelectItem value="no">No</SelectItem>
             </SelectGroup>

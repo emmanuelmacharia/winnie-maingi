@@ -64,8 +64,8 @@ export default function HomePage() {
       <section className="bg-emerald flex items-center justify-center px-8 py-16 text-white">
         {/* Feedback section aligned with about section */}
         <div className="mx-auto w-full max-w-7xl">
-          <div className="flex gap-8">
-            <div className="flex w-1/2 flex-col gap-8 text-justify">
+          <div className="flex flex-col gap-8 lg:flex-row">
+            <div className="flex w-full flex-col gap-8 text-justify lg:w-1/2">
               <h2 className="text-yellow mb-4 text-left text-3xl font-semibold">
                 We&apos;d love your feedback
               </h2>
@@ -77,7 +77,7 @@ export default function HomePage() {
               </p>
               <p>It only takes a minute and it means the world to us!</p>
             </div>
-            <div className="w-1/2">
+            <div className="w-full lg:w-1/2">
               <FeedbackForm />
             </div>
           </div>

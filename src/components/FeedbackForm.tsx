@@ -23,7 +23,7 @@ const FeedbackForm = () => {
         <Label className="pb-1" htmlFor="message">
           Message
         </Label>
-        <Textarea name="name" id="message" placeholder="Your message" />
+        <Textarea name="message" id="message" placeholder="Your message" />
         <div className="flex justify-start py-3">
           <button
             type="submit"

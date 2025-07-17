@@ -33,7 +33,7 @@ export default function HomePage() {
           <h2 className="mb-4 text-3xl font-semibold">About the coach</h2>
           <div className="flex flex-col items-center lg:flex-row lg:gap-8">
             <div>
-              <p className="text-gray-70 w-full py-12 text-lg lg:max-w-2xl">
+              <p className="w-full py-12 text-lg lg:max-w-2xl">
                 Winnie Maingi is an experienced estate planner, trust
                 practitioner, and lawyer specializing in trust and family law,
                 estate planning, and family business advisory. She is dedicated

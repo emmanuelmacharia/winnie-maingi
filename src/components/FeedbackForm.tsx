@@ -45,6 +45,7 @@ const FeedbackForm = () => {
           value={form.name}
           onChange={handleChange}
           required
+          maxLength={256}
         />
         <Label className="pb-1" htmlFor="email">
           Email
@@ -57,6 +58,7 @@ const FeedbackForm = () => {
           value={form.email}
           onChange={handleChange}
           required
+          maxLength={256}
         />
         <Label className="pb-1" htmlFor="message">
           Message
@@ -68,6 +70,7 @@ const FeedbackForm = () => {
           value={form.message}
           onChange={handleChange}
           required
+          maxLength={1000}
         />
         <div className="flex justify-start py-3">
           <button

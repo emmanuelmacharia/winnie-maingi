@@ -7,6 +7,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { createGuestFeedback } from "~/server/actions/actions";
 import { toast } from "sonner";
+import { set } from "zod/v4";
 
 const FeedbackForm = () => {
   const [form, setForm] = useState({
@@ -14,6 +15,8 @@ const FeedbackForm = () => {
     email: "",
     message: "",
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -23,9 +26,11 @@ const FeedbackForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     const submitted = await createGuestFeedback(form);
     console.log("Feedback submitted:", submitted);
     if (submitted.success === false) {
+      setLoading(false);
       console.log("Feedback submission failed:", submitted.message);
       toast.error(submitted.message, {
         style: {
@@ -34,6 +39,7 @@ const FeedbackForm = () => {
         },
       });
     } else {
+      setLoading(false);
       toast.success(submitted.message, {
         style: {
           background: "#0D1F08",
@@ -88,8 +94,9 @@ const FeedbackForm = () => {
         />
         <div className="flex justify-start py-3">
           <button
+            disabled={loading}
             type="submit"
-            className="bg-yellow hover:bg-yellow/80 focus:ring-yellow/50 rounded-4xl px-6 py-4 text-white hover:cursor-pointer focus:ring-2 focus:outline-none"
+            className="bg-yellow hover:bg-yellow/80 focus:ring-yellow/50 rounded-4xl px-6 py-4 text-white hover:cursor-pointer focus:ring-2 focus:outline-none disabled:opacity-40"
           >
             Submit Feedback
           </button>

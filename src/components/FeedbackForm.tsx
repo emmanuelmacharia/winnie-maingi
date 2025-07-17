@@ -100,7 +100,7 @@ const FeedbackForm = () => {
           value={form.followUp}
           onValueChange={(value) => setForm({ ...form, followUp: value })}
         >
-          <SelectTrigger className="mb-2 w-full">
+          <SelectTrigger className="mb-2 w-full" id="followUp">
             <SelectValue placeholder="Select an option" />
           </SelectTrigger>
           <SelectContent>

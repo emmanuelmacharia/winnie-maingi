@@ -39,9 +39,9 @@ export const MUTATIONS = {
     try {
       console.log("Creating guest feedback with input:", parsedInput.data);
       await db.insert(guest_feedback_table).values({
-        name: input.name,
-        message: input.message,
-        email: input.email,
+        name: parsedInput.data.name,
+        message: parsedInput.data.message,
+        email: parsedInput.data.email,
       });
 
       const result = await QUERIES.getAllGuestFeedback();

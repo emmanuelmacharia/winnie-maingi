@@ -1,4 +1,5 @@
 import { db } from ".";
+import { desc } from "drizzle-orm";
 import { z } from "zod";
 import { guest_feedback_table } from "./schema";
 import type { DB_GuestFeedback } from "./schema";
@@ -8,6 +9,22 @@ const feedbackSchema = z.object({
   email: z.string().trim().email(),
   message: z.string().trim().min(1).max(1_000),
 });
+
+export const QUERIES = {
+  getAllGuestFeedback: async function (): Promise<DB_GuestFeedback[] | null> {
+    try {
+      const result = await db
+        .select()
+        .from(guest_feedback_table)
+        .orderBy(desc(guest_feedback_table.createdAt))
+        .limit(1);
+      return result.length > 0 ? result : null;
+    } catch (error) {
+      console.error("Error fetching guest feedback:", error);
+      throw new Error("Failed to fetch guest feedback");
+    }
+  },
+};
 
 export const MUTATIONS = {
   createGuestFeedback: async function (input: {
@@ -21,13 +38,13 @@ export const MUTATIONS = {
     }
     try {
       console.log("Creating guest feedback with input:", parsedInput.data);
-      const query = await db.insert(guest_feedback_table).values({
+      await db.insert(guest_feedback_table).values({
         name: input.name,
         message: input.message,
         email: input.email,
       });
 
-      const result: DB_GuestFeedback = query[0]!;
+      const result = await QUERIES.getAllGuestFeedback();
       console.log("Feedback created successfully:", result);
       return result;
     } catch (error) {

@@ -28,7 +28,7 @@ export const createGuestFeedback = async (feedback: {
 
   // message max length validation
   if (feedback.message.length > 1000) {
-    throw new Error("Message must be less than 5000 characters");
+    throw new Error("Message must be less than 1000 characters");
   }
 
   try {

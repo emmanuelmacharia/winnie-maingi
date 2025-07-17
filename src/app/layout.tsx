@@ -42,7 +42,7 @@ export default function RootLayout({
                 target="_blank"
               >
                 <Image
-                  src="/instagram.svg"
+                  src="/Instagram.svg"
                   alt="Instagram"
                   width={24}
                   height={24}

@@ -8,7 +8,7 @@ export default function HomePage() {
         {/* Hero section */}
         {/* Background Image */}
         <Image
-          src="/hero-cover.png"
+          src="/hero-cover-real.png"
           alt="Winnie Maingi Hero"
           fill
           priority
@@ -17,11 +17,11 @@ export default function HomePage() {
         {/* Overlay for better text contrast */}
         <div className="absolute inset-0 -z-10 bg-black/40" />
         {/* Hero Content */}
-        <div className="relative z-10 flex w-full flex-col justify-end px-8 pb-16">
-          <h1 className="mb-6 max-w-5xl font-sans text-[5vw] leading-none font-light text-white md:text-[6rem]">
+        <div className="relative z-10 flex w-full flex-col justify-end px-12 pb-16 lg:px-24">
+          <h1 className="mb-6 max-w-7xl font-sans text-[3vw] leading-none text-white md:text-6xl">
             Winnie Maingi
           </h1>
-          <p className="max-w-4xl font-sans text-xl text-white md:text-2xl">
+          <p className="max-w-4xl font-sans text-xl text-white md:text-3xl">
             Thought Leader in Trust and Family Law | Estate Planning
             <br />| Family Business Advisory
           </p>
@@ -43,7 +43,7 @@ export default function HomePage() {
               </p>
             </div>
             <div>
-              <p className="mt-0 w-full pt-0 text-lg lg:max-w-2xl">
+              <p className="-mt-8 w-full pt-0 text-lg lg:max-w-2xl">
                 Winnie&apos;s expertise includes:
               </p>
               <ul className="list-disc pl-6 text-lg">
@@ -64,8 +64,8 @@ export default function HomePage() {
         {/* Feedback section aligned with about section */}
         <div className="mx-auto w-full max-w-7xl">
           <div className="flex flex-col gap-8 lg:flex-row">
-            <div className="flex w-full flex-col gap-8 text-justify lg:w-1/2">
-              <h2 className="text-yellow mb-4 text-left text-3xl font-semibold">
+            <div className="flex w-full flex-col gap-6 text-justify lg:w-1/2">
+              <h2 className="text-yellow text-left text-3xl font-normal">
                 We&apos;d love your feedback
               </h2>
               <p>

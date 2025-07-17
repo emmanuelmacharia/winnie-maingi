@@ -6,6 +6,8 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { createGuestFeedback } from "~/server/actions/actions";
+import { toast } from "sonner";
+import { set } from "zod/v4";
 
 const FeedbackForm = () => {
   const [form, setForm] = useState({
@@ -14,7 +16,7 @@ const FeedbackForm = () => {
     message: "",
   });
 
-  const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -24,10 +26,27 @@ const FeedbackForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Here you can send the form data to an API or service
+    setLoading(true);
     const submitted = await createGuestFeedback(form);
     console.log("Feedback submitted:", submitted);
-    // Reset the form
+    if (submitted.success === false) {
+      setLoading(false);
+      console.log("Feedback submission failed:", submitted.message);
+      toast.error(submitted.message, {
+        style: {
+          background: "#651211",
+          color: "#fff",
+        },
+      });
+    } else {
+      setLoading(false);
+      toast.success(submitted.message, {
+        style: {
+          background: "#0D1F08",
+          color: "#fff",
+        },
+      });
+    }
     setForm({ name: "", email: "", message: "" });
   };
 
@@ -71,11 +90,13 @@ const FeedbackForm = () => {
           onChange={handleChange}
           required
           maxLength={1000}
+          className="h-32 resize-none"
         />
         <div className="flex justify-start py-3">
           <button
+            disabled={loading}
             type="submit"
-            className="bg-yellow hover:bg-yellow/80 focus:ring-yellow/50 rounded-4xl px-6 py-4 text-white hover:cursor-pointer focus:ring-2 focus:outline-none"
+            className="bg-yellow hover:bg-yellow/80 focus:ring-yellow/50 rounded-4xl px-6 py-4 text-white hover:cursor-pointer focus:ring-2 focus:outline-none disabled:opacity-40"
           >
             Submit Feedback
           </button>

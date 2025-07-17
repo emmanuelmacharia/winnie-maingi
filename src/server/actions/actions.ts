@@ -12,31 +12,55 @@ export const createGuestFeedback = async (feedback: {
     !feedback.email?.trim() ||
     !feedback.message?.trim()
   ) {
-    throw new Error("All fields are required");
+    return {
+      message: "All fields are required",
+      data: null,
+      success: false,
+    };
   }
 
   // sanitize input
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(feedback.email)) {
-    throw new Error("Please enter a valid email address");
+    return {
+      message: "Please enter a valid email address",
+      data: null,
+      success: false,
+    };
   }
 
   // Validate input lengths
   if (feedback.name.length > 256 || feedback.email.length > 256) {
-    throw new Error("Name and email must be less than 256 characters");
+    return {
+      message: "Name and email must be less than 256 characters",
+      data: null,
+      success: false,
+    };
   }
 
   // message max length validation
   if (feedback.message.length > 1000) {
-    throw new Error("Message must be less than 1000 characters");
+    return {
+      message: "Message must be less than 1000 characters",
+      data: null,
+      success: false,
+    };
   }
 
   try {
     const result = await MUTATIONS.createGuestFeedback(feedback);
     console.log("Feedback submitted successfully:", result);
-    return result;
+    return {
+      success: true,
+      message: "Feedback submitted successfully",
+      data: result,
+    };
   } catch (error) {
     console.error("Error submitting feedback:", error);
-    throw new Error("Failed to submit feedback");
+    return {
+      message: "Failed to submit feedback. Please try again later.",
+      data: error instanceof Error ? error.message : "Unknown error",
+      success: "false",
+    };
   }
 };

@@ -6,6 +6,7 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { createGuestFeedback } from "~/server/actions/actions";
+import { toast } from "sonner";
 
 const FeedbackForm = () => {
   const [form, setForm] = useState({
@@ -13,8 +14,6 @@ const FeedbackForm = () => {
     email: "",
     message: "",
   });
-
-  const [error, setError] = useState<boolean>(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -24,10 +23,24 @@ const FeedbackForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Here you can send the form data to an API or service
     const submitted = await createGuestFeedback(form);
     console.log("Feedback submitted:", submitted);
-    // Reset the form
+    if (submitted.success === false) {
+      console.log("Feedback submission failed:", submitted.message);
+      toast.error(submitted.message, {
+        style: {
+          background: "#651211",
+          color: "#fff",
+        },
+      });
+    } else {
+      toast.success(submitted.message, {
+        style: {
+          background: "#0D1F08",
+          color: "#fff",
+        },
+      });
+    }
     setForm({ name: "", email: "", message: "" });
   };
 
@@ -71,6 +84,7 @@ const FeedbackForm = () => {
           onChange={handleChange}
           required
           maxLength={1000}
+          className="h-32 resize-none"
         />
         <div className="flex justify-start py-3">
           <button

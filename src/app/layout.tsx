@@ -4,6 +4,7 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { Toaster } from "~/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -58,6 +59,7 @@ export default function RootLayout({
             © {currentYear} All rights reserved.
           </footer>
         </div>
+        <Toaster position="top-center" />
       </body>
     </html>
   );

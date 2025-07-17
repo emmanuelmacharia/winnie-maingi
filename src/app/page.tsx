@@ -27,13 +27,13 @@ export default function HomePage() {
           </p>
         </div>
       </section>
-      <section className="flex items-center justify-center px-8 py-16">
+      <section className="flex flex-col items-center justify-center px-8 py-16 lg:flex-row">
         {/* About section */}
         <div className="mx-auto w-full max-w-7xl">
           <h2 className="mb-4 text-3xl font-semibold">About the coach</h2>
-          <div className="flex items-center gap-8">
+          <div className="flex flex-col items-center lg:flex-row lg:gap-8">
             <div>
-              <p className="max-w-2xl py-12 text-lg text-gray-700">
+              <p className="w-full py-12 text-lg lg:max-w-2xl">
                 Winnie Maingi is an experienced estate planner, trust
                 practitioner, and lawyer specializing in trust and family law,
                 estate planning, and family business advisory. She is dedicated
@@ -42,12 +42,11 @@ export default function HomePage() {
                 businesses
               </p>
             </div>
-
             <div>
-              <p className="mt-0 max-w-2xl pt-0 text-lg text-gray-700">
+              <p className="mt-0 w-full pt-0 text-lg lg:max-w-2xl">
                 Winnie&apos;s expertise includes:
               </p>
-              <ul className="list-disc pl-6 text-lg text-gray-700">
+              <ul className="list-disc pl-6 text-lg">
                 <li>
                   Trust Planning: Ensuring seamless wealth transition across
                   generations

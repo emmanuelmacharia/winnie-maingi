@@ -12,10 +12,10 @@ import { index, pgTableCreator } from "drizzle-orm/pg-core";
  */
 export const createTable = pgTableCreator((name) => `estateplanner_${name}`);
 
-export const posts = createTable(
-  "guests",
+export const guest_feedback_table = createTable(
+  "guest_feedback",
   (d) => ({
-    guest_id: d.integer().primaryKey(),
+    guest_id: d.integer().primaryKey().generatedAlwaysAsIdentity(),
     name: d.varchar({ length: 256 }),
     createdAt: d
       .timestamp({ withTimezone: true })
@@ -23,7 +23,9 @@ export const posts = createTable(
       .notNull(),
     updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
     email: d.varchar({ length: 256 }).notNull(),
-    phone: d.varchar({ length: 20 }).notNull(),
+    message: d.text().notNull(),
   }),
   (t) => [index("guest_name_idx").on(t.name)],
 );
+
+export type DB_GuestFeedback = typeof guest_feedback_table.$inferSelect;

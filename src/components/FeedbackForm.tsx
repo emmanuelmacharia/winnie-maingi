@@ -10,20 +10,20 @@ const FeedbackForm = () => {
         <Label className="pb-1" htmlFor="name">
           Name
         </Label>
-        <Input type="text" name="name" id="" placeholder="Your name" />
+        <Input type="text" name="name" id="name" placeholder="Your name" />
         <Label className="pb-1" htmlFor="email">
           Email
         </Label>
         <Input
           type="email"
           name="email"
-          id=""
+          id="email"
           placeholder="Your email address"
         />
         <Label className="pb-1" htmlFor="message">
           Message
         </Label>
-        <Textarea name="name" id="" placeholder="Your message" />
+        <Textarea name="name" id="message" placeholder="Your message" />
         <div className="flex justify-start py-3">
           <button
             type="submit"

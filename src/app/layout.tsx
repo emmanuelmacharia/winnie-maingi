@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -31,7 +32,29 @@ export default function RootLayout({
           <div className="flex flex-1 flex-col items-center justify-center">
             <main className="flex w-full flex-1 flex-col">{children}</main>
           </div>
-          <footer className="bg-zinc text-primary mx-auto flex w-full justify-around p-4 px-4">
+          <footer className="bg-zinc text-primary mx-auto flex w-full max-w-7xl flex-col justify-around gap-2 p-4 px-4">
+            <div className="socials row flex">
+              {/* Social media links can be added here */}
+              <Link
+                href="https://www.instagram.com/estateplannerke/"
+                className="mr-4"
+                target="_blank"
+              >
+                <Image
+                  src="/instagram.svg"
+                  alt="Instagram"
+                  width={24}
+                  height={24}
+                />
+              </Link>
+              <Link
+                href="https://www.tiktok.com/@estateplannerke?_t=8hjofVDV2qk&_r=1&fbclid=PAZXh0bgNhZW0CMTEAAae_JFZhKl5EvwGJvettVLkuWAGqmjCjXPiEIBTTjfIrZaUeEs1AljSfoJfouA_aem_Iz4URdKJkrC4NfqA-nCpDw"
+                className="mr-4"
+                target="_blank"
+              >
+                <Image src="/tiktok.svg" alt="tiktok" width={24} height={24} />
+              </Link>
+            </div>
             © {currentYear} All rights reserved.
           </footer>
         </div>

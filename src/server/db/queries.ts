@@ -11,7 +11,9 @@ const feedbackSchema = z.object({
 });
 
 export const QUERIES = {
-  getAllGuestFeedback: async function (): Promise<DB_GuestFeedback[] | null> {
+  getLatestGuestFeedback: async function (): Promise<
+    DB_GuestFeedback[] | null
+  > {
     try {
       const result = await db
         .select()
@@ -44,7 +46,7 @@ export const MUTATIONS = {
         email: parsedInput.data.email,
       });
 
-      const result = await QUERIES.getAllGuestFeedback();
+      const result = await QUERIES.getLatestGuestFeedback();
       console.log("Feedback created successfully:", result);
       return result;
     } catch (error) {

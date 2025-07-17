@@ -63,9 +63,7 @@ const FeedbackForm = () => {
   return (
     <div className="w-full max-w-md p-4">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <Label className="pb-1" htmlFor="name">
-          Name
-        </Label>
+        <Label htmlFor="name">Name</Label>
         <Input
           type="text"
           name="name"
@@ -76,9 +74,7 @@ const FeedbackForm = () => {
           required
           maxLength={256}
         />
-        <Label className="pb-1" htmlFor="email">
-          Email
-        </Label>
+        <Label htmlFor="email">Email</Label>
         <Input
           type="email"
           name="email"
@@ -89,6 +85,7 @@ const FeedbackForm = () => {
           required
           maxLength={256}
         />
+        <Label htmlFor="followUp">Would you like a follow-up session?</Label>
         <Select
           required
           name="followUp"
@@ -96,7 +93,7 @@ const FeedbackForm = () => {
           onValueChange={(value) => setForm({ ...form, followUp: value })}
         >
           <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select follow up option" />
+            <SelectValue placeholder="Select an option" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
@@ -106,9 +103,7 @@ const FeedbackForm = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Label className="pb-1" htmlFor="message">
-          Message
-        </Label>
+        <Label htmlFor="message">Message</Label>
         <Textarea
           name="message"
           id="message"

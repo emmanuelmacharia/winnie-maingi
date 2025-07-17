@@ -56,7 +56,8 @@ export default function RootLayout({
                 <Image src="/tiktok.svg" alt="tiktok" width={24} height={24} />
               </Link>
             </div>
-            © {currentYear} All rights reserved.
+            <p className="-mb-2 text-sm">Winnie Maingi</p>
+            <p className="text-sm">© {currentYear} All rights reserved.</p>
           </footer>
         </div>
         <Toaster position="top-center" />

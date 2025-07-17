@@ -61,7 +61,7 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="w-full max-w-md p-4">
+    <div className="w-full max-w-md lg:p-4">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Label className="-mb-2" htmlFor="name">
           Name

@@ -63,7 +63,9 @@ const FeedbackForm = () => {
   return (
     <div className="w-full max-w-md p-4">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <Label htmlFor="name">Name</Label>
+        <Label className="-mb-2" htmlFor="name">
+          Name
+        </Label>
         <Input
           type="text"
           name="name"
@@ -73,8 +75,11 @@ const FeedbackForm = () => {
           onChange={handleChange}
           required
           maxLength={256}
+          className="mb-2"
         />
-        <Label htmlFor="email">Email</Label>
+        <Label className="-mb-2" htmlFor="email">
+          Email
+        </Label>
         <Input
           type="email"
           name="email"
@@ -84,26 +89,30 @@ const FeedbackForm = () => {
           onChange={handleChange}
           required
           maxLength={256}
+          className="mb-2"
         />
-        <Label htmlFor="followUp">Would you like a follow-up session?</Label>
+        <Label className="-mb-2" htmlFor="followUp">
+          Would you like a follow-up session?
+        </Label>
         <Select
           required
           name="followUp"
           value={form.followUp}
           onValueChange={(value) => setForm({ ...form, followUp: value })}
         >
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="mb-2 w-full">
             <SelectValue placeholder="Select an option" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              {/* <SelectLabel>Are you interested in a 1 on 1 session?</SelectLabel> */}
               <SelectItem value="yes">Yes</SelectItem>
               <SelectItem value="no">No</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Label htmlFor="message">Message</Label>
+        <Label className="-mb-2" htmlFor="message">
+          Message
+        </Label>
         <Textarea
           name="message"
           id="message"

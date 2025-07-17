@@ -24,6 +24,7 @@ export const guest_feedback_table = createTable(
     updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
     email: d.varchar({ length: 256 }).notNull(),
     message: d.text().notNull(),
+    followUp: d.varchar({ length: 3 }).default("no").notNull(),
   }),
   (t) => [index("guest_name_idx").on(t.name)],
 );

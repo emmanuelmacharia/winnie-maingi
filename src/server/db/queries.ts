@@ -8,6 +8,7 @@ const feedbackSchema = z.object({
   name: z.string().trim().min(1).max(100),
   email: z.string().trim().email(),
   message: z.string().trim().min(1).max(1_000),
+  followUp: z.string().trim().optional(),
 });
 
 export const QUERIES = {
@@ -44,6 +45,7 @@ export const MUTATIONS = {
         name: parsedInput.data.name,
         message: parsedInput.data.message,
         email: parsedInput.data.email,
+        followUp: parsedInput.data.followUp ?? "no",
       });
 
       const result = await QUERIES.getLatestGuestFeedback();

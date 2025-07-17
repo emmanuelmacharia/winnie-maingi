@@ -7,13 +7,22 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { createGuestFeedback } from "~/server/actions/actions";
 import { toast } from "sonner";
-import { set } from "zod/v4";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const FeedbackForm = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
+    followUp: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -27,6 +36,7 @@ const FeedbackForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    console.log("Submitting feedback with form data:", form);
     const submitted = await createGuestFeedback(form);
     console.log("Feedback submitted:", submitted);
     if (submitted.success === false) {
@@ -47,15 +57,13 @@ const FeedbackForm = () => {
         },
       });
     }
-    setForm({ name: "", email: "", message: "" });
+    setForm({ name: "", email: "", message: "", followUp: "" });
   };
 
   return (
     <div className="w-full max-w-md p-4">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <Label className="pb-1" htmlFor="name">
-          Name
-        </Label>
+        <Label htmlFor="name">Name</Label>
         <Input
           type="text"
           name="name"
@@ -66,9 +74,7 @@ const FeedbackForm = () => {
           required
           maxLength={256}
         />
-        <Label className="pb-1" htmlFor="email">
-          Email
-        </Label>
+        <Label htmlFor="email">Email</Label>
         <Input
           type="email"
           name="email"
@@ -79,9 +85,25 @@ const FeedbackForm = () => {
           required
           maxLength={256}
         />
-        <Label className="pb-1" htmlFor="message">
-          Message
-        </Label>
+        <Label htmlFor="followUp">Would you like a follow-up session?</Label>
+        <Select
+          required
+          name="followUp"
+          value={form.followUp}
+          onValueChange={(value) => setForm({ ...form, followUp: value })}
+        >
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select an option" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Are you interested in a 1 on 1 session?</SelectLabel>
+              <SelectItem value="yes">Yes</SelectItem>
+              <SelectItem value="no">No</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <Label htmlFor="message">Message</Label>
         <Textarea
           name="message"
           id="message"

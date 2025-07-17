@@ -6,7 +6,9 @@ export const createGuestFeedback = async (feedback: {
   name: string;
   email: string;
   message: string;
+  followUp?: string;
 }) => {
+  console.log("Creating guest feedback with data:", feedback);
   if (
     !feedback.name?.trim() ||
     !feedback.email?.trim() ||
@@ -37,6 +39,10 @@ export const createGuestFeedback = async (feedback: {
       success: false,
     };
   }
+
+  const normalizedFollowUp = feedback.followUp?.trim().toLowerCase();
+  const followUp = normalizedFollowUp === "yes" ? "yes" : "no";
+  feedback.followUp = followUp;
 
   // message max length validation
   if (feedback.message.length > 1000) {
